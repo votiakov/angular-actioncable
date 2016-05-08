@@ -1,4 +1,8 @@
+'use strict';
+
 var ngActionCable= angular.module('ngActionCable', ['ngWebSocket']);
+
+'use strict';
 
 ngActionCable.factory("ActionCableChannel",function ($q, ActionCableController, ActionCableWebsocket, ActionCableConfig, ActionCableSocketWrangler){
   return function(channelName, channelParams){
@@ -66,6 +70,8 @@ ngActionCable.factory("ActionCableChannel",function ($q, ActionCableController, 
   };
 });
 
+'use strict';
+
 // default websocket configs
 // looks for Rails' <%= action_cable_meta_tag %> in this format:
 // <meta name="action-cable-url" content="ws://localhost:3000/cable"/>
@@ -74,6 +80,8 @@ ngActionCable.value('ActionCableConfig', {
     wsUri: angular.element("meta[name='action-cable-url']").attr("content") || "",
     debug: false
   });
+
+'use strict';
 
 ngActionCable.factory('ActionCableController', function (ActionCableConfig) {
 
@@ -146,6 +154,8 @@ ngActionCable.factory('ActionCableController', function (ActionCableConfig) {
 
   return methods;
 });
+
+'use strict';
 
 // ngActionCableSocketWrangler to start, stop or try reconnect websockets if they die.
 //
@@ -241,6 +251,8 @@ ngActionCable.factory("ActionCableSocketWrangler", function($rootScope, ActionCa
   if (ActionCableConfig.autoStart) methods.start();
   return methods;
 });
+
+'use strict';
 
 // ActionCable JSON formats:
 //
