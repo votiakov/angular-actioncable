@@ -8,6 +8,7 @@ var ngAnnotate = require('gulp-ng-annotate');
 var clean = require('gulp-clean');
 var path = require('path');
 var plumber = require('gulp-plumber');
+var map = require('map-stream');
 var jshint = require('gulp-jshint');
 var eventStream = require('event-stream');
 
@@ -46,14 +47,23 @@ gulp.task('clean', function () {
     .pipe(clean());
 });
 
+
 // Validate source JavaScript
+var map = require('map-stream');
+var exitOnJshintError = map(function (file, cb) {
+  if (!file.jshint.success) {
+    console.error('jshint failed');
+    process.exit(1);
+  }
+});
 gulp.task('jshint', function () {
   gulp.src(lintFiles)
     .pipe(plumber())
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
+    .pipe(exitOnJshintError);
 });
+
 
 // watch for changes
 gulp.task('watch', function () {
