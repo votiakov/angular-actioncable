@@ -6,11 +6,14 @@ describe('ActionCableConfig', function(){
   beforeEach(inject(function(_ActionCableConfig_){
     ActionCableConfig= _ActionCableConfig_;
   }));
-  describe('module', function(){
-    it('exists', function(){
-      expect(ActionCableConfig).toBeObject;
-    });
+  afterEach(function(){
+    resetActionCableConfig();
   });
+  function resetActionCableConfig() {
+    ActionCableConfig.wsUri= undefined;
+    ActionCableConfig.autoStart= undefined;
+    ActionCableConfig.debug= undefined;
+  };
   describe('autoStart', function() {
     it('initiates to true', function(){
       expect(ActionCableConfig.autoStart).toBe(true);
@@ -20,7 +23,7 @@ describe('ActionCableConfig', function(){
         ActionCableConfig.autoStart= false;
       });
 
-      it('returns false', function(){
+      it('remembers false', function(){
         expect(ActionCableConfig.autoStart).toBe(false);
       });
     });
@@ -33,21 +36,37 @@ describe('ActionCableConfig', function(){
       beforeEach(function() {
         ActionCableConfig.debug= true;
       });
-      it('returns true', function(){
+      it('remembers true', function(){
         expect(ActionCableConfig.debug).toBe(true);
       });
     });
   });
   describe('wsUri', function() {
     describe('when meta tag set', function() {
+      var element, attr;
+      beforeEach(function() {
+        element= { attr: null, data: function(){} };
+        attr= 'wss://foobar.tld:1234/path/name';
+        spyOn(angular, 'element').and.returnValue(element);
+        spyOn(element, 'attr').and.returnValue(attr);
+      });
       it('returns meta value', function(){
-        //the meta tag needs to be faked here but the html is loaded before angular and the jquery is executed on file read
-        //expect(ActionCableConfig.wsUri).toBe('wss://foobar.tld:1234/path/name');
+        expect(ActionCableConfig.wsUri).toBe('wss://foobar.tld:1234/path/name');
+        expect(angular.element).toHaveBeenCalledWith("meta[name='action-cable-url']");
+        expect(element.attr).toHaveBeenCalledWith("content");
       });
     });
     describe('when meta tag not found', function() {
-      it('returns empty', function(){
+      it('returns default string', function(){
         expect(ActionCableConfig.wsUri).toBe('');
+      });
+    });
+    describe('after being explicitly set', function() {
+      beforeEach(function() {
+        ActionCableConfig.wsUri= 'String 42';
+      });
+      it('remembers the setting', function(){
+        expect(ActionCableConfig.wsUri).toBe('String 42');
       });
     });
   });
