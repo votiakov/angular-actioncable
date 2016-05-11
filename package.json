@@ -31,9 +31,6 @@
     "url": "https://github.com/angular-actioncable/angular-actioncable/issues"
   },
   "homepage": "https://github.com/angular-actioncable/angular-actioncable#readme",
-  "bin": {
-    "coveralls": "./node_modules/.bin/coveralls"
-  },
   "dependencies": {
     "angular": "*",
     "angular-websocket": "^1.1.0"

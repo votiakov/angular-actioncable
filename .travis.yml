@@ -16,3 +16,6 @@ before_script:
 
 script:
   - "gulp release"
+
+after_script:
+  - "NODE_ENV=cat coverage/PhantomJS*/lcov.info | node_modules/coveralls/bin/coveralls.js && rm -rf coverage"
