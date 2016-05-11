@@ -9,6 +9,7 @@ var clean = require('gulp-clean');
 var path = require('path');
 var plumber = require('gulp-plumber');
 var jshint = require('gulp-jshint');
+var map = require('map-stream');
 var eventStream = require('event-stream');
 
 // Root directory
@@ -47,12 +48,19 @@ gulp.task('clean', function () {
 });
 
 // Validate source JavaScript
+var map = require('map-stream');
+var exitOnJshintError = map(function (file, cb) {
+  if (!file.jshint.success) {
+    console.error('jshint failed');
+    process.exit(1);
+  }
+});
 gulp.task('jshint', function () {
   gulp.src(lintFiles)
     .pipe(plumber())
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
+    .pipe(exitOnJshintError);
 });
 
 // watch for changes
