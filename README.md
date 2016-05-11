@@ -2,6 +2,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/angular-actioncable.svg?style=flat&label=npm+downloads)](https://www.npmjs.com/package/angular-actioncable)
 [![Bower version](https://img.shields.io/bower/v/angular-actioncable.svg?maxAge=2592000?color=green&style=flat)](https://github.com/angular-actioncable/angular-actioncable/releases)
 [![Build Status](https://travis-ci.org/angular-actioncable/angular-actioncable.svg?branch=master)](https://travis-ci.org/angular-actioncable/angular-actioncable)
+[![Coverage Status](https://coveralls.io/repos/github/angular-actioncable/angular-actioncable/badge.svg?branch=master)](https://coveralls.io/github/angular-actioncable/angular-actioncable?branch=master)
 [![License](http://img.shields.io/license/MIT.png?color=green&style=flat)](http://opensource.org/licenses/MIT)
 # angular-actioncable
 
