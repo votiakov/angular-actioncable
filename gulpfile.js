@@ -9,6 +9,7 @@ var clean = require('gulp-clean');
 var path = require('path');
 var plumber = require('gulp-plumber');
 var jshint = require('gulp-jshint');
+var map = require('map-stream');
 var eventStream = require('event-stream');
 
 // Root directory
@@ -47,12 +48,19 @@ gulp.task('clean', function () {
 });
 
 // Validate source JavaScript
+var map = require('map-stream');
+var exitOnJshintError = map(function (file, cb) {
+  if (!file.jshint.success) {
+    console.error('jshint failed');
+    process.exit(1);
+  }
+});
 gulp.task('jshint', function () {
   gulp.src(lintFiles)
     .pipe(plumber())
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(jshint.reporter('fail'));
+    .pipe(exitOnJshintError);
 });
 
 // watch for changes
@@ -68,29 +76,22 @@ gulp.task('test', function (done) {
   }, done).start();
 });
 
-gulp.task('test-dist', ['build'], function (done) {
+
+
+gulp.task('test-dist', function (done) {
   new Server({
     configFile: __dirname + '/karma-dist-concatenated.conf.js',
     singleRun: true
   }, done).start();
 });
 
-gulp.task('test-min', ['build'], function (done) {
+gulp.task('test-min', function (done) {
   new Server({
     configFile: __dirname + '/karma-dist-minified.conf.js',
     singleRun: true
   }, done).start();
 });
 
-gulp.task('release', ['jshint', 'test', 'test-dist'], function(done){
-  gulp.task('test-min');
-  done();
-}); //runs `build` too as task dependency
 
 gulp.task('serve', ['test', 'watch', 'build']);
-gulp.task('default', []);
-
-
-
-
-
+gulp.task('default', ['test']);

@@ -1,3 +1,5 @@
+'use strict';
+
 ngActionCable.factory("ActionCableChannel",function ($q, ActionCableController, ActionCableWebsocket, ActionCableConfig, ActionCableSocketWrangler){
   return function(channelName, channelParams){
     this._websocketControllerActions= function(){

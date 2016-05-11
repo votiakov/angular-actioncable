@@ -4,7 +4,10 @@
   "description": "Connect Angular to ActionCable",
   "main": "angular-actioncable.js",
   "scripts": {
-    "test": "gulp test"
+    "test_src": "gulp jshint && gulp test",
+    "build": "gulp jshint && gulp test && gulp build",
+    "test_dist": "gulp test-dist && gulp test-min",
+    "release": "gulp jshint && gulp test && gulp build && gulp test-dist && gulp test-min"
   },
   "repository": {
     "type": "git",
@@ -61,6 +64,7 @@
     "karma-jasmine-matchers": "^2.0.2",
     "karma-mocha-reporter": "^2.0.2",
     "karma-phantomjs-launcher": "^1.0.0",
+    "map-stream": "^0.0.6",
     "phantomjs-prebuilt": "^2.1.7"
   }
 }

@@ -1,3 +1,5 @@
+'use strict';
+
 // ActionCable JSON formats:
 //
 // "identifier" for subscribe, unsubscribe and message must be the same to refer the same subscription!

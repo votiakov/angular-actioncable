@@ -1,3 +1,5 @@
+'use strict';
+
 // ngActionCableSocketWrangler to start, stop or try reconnect websockets if they die.
 //
 // Current status is denoted by three booleans:
