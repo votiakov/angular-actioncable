@@ -1,5 +1,6 @@
 bower_components/
 node_modules/
+coverage/
 npm-debug.log
 .DS_Store
 .fuse_hidden*
