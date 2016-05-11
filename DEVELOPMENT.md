@@ -1,4 +1,4 @@
-[Back to readme](https://github.com/angular-actioncable/angular-actioncable/blob/master/README.md)
+[< Back to readme](https://github.com/angular-actioncable/angular-actioncable/blob/master/README.md)
 
 ## Contribute
  
@@ -11,6 +11,13 @@
  - `npm install -g karma-cli`
  - `npm install`
 
+ - `npm run test_src` runs `gulp jshint` and `gulp test` on `src/*.js` files
+ - `npm run test_dist` runs `gulp test-dist` and `gulp test-min` on `dist/*.js` files
+ - `npm run build` runs `gulp jshint` and `gulp test` and `gulp build`
+ - `npm run release` tests `src/`, builds `dist/` and tests `dist/`
+
+#### other commands
+
  - `gulp jshint` runs jshint over the `/src` javascript files
  - `gulp build` builds package in `/dist` folder
  - `gulp watch` continuously runs `gulp build` on any change of the `/src` files
@@ -20,15 +27,6 @@
  - `gulp test` run tests on `/src` files (must have {Chromium or Chrome} and Firefox installed locally)
  - `gulp test-dist` run tests on `/dist/angular-actioncable.js` files (must have {Chromium or Chrome} and Firefox installed locally)
  - `gulp test-min` run tests on `/dist/angular-actioncable.min.js` files (must have {Chromium or Chrome} and Firefox installed locally)
-
-
-## Test suite (developed using Node v4.3.1)
- 
- - `npm run test_src` runs `gulp jshint` and `gulp test` on `src/*.js` files
- - `npm run test_dist` runs `gulp test-dist` and `gulp test-min` on `dist/*.js` files
- - `npm run build` runs `gulp jshint` and `gulp test` and `gulp build`
- - `npm run release` tests `src/`, builds `dist/` and tests `dist/`
-
 
 ## Publish
  
