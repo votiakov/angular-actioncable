@@ -2,6 +2,8 @@
 
 Features:
   - Officially support Rails 5.0.0.rc1
+  - Update development tasks
+  - Add tests around ActionCableConfig
 
 ## 1.0.0-beta2  First release
 
