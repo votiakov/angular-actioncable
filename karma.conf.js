@@ -39,9 +39,6 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    // reporters: ['mocha'],
-
-    // coverage reporter generates the coverage
     reporters: ['progress', 'coverage'],
 
     // optionally, configure the reporter
@@ -86,9 +83,3 @@ module.exports = function(config) {
     concurrency: Infinity
   })
 };
-
-
-
-
-
-
