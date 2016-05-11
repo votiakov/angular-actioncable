@@ -18,4 +18,4 @@ script:
   - "gulp release"
 
 after_script:
-  - "cat coverage/PhantomJS*/lcov.info | ./node_modules/coveralls/bin/coveralls.js"
+  - "cat coverage/PhantomJS*/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf coverage"
