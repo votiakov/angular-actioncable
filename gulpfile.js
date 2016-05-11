@@ -8,7 +8,6 @@ var ngAnnotate = require('gulp-ng-annotate');
 var clean = require('gulp-clean');
 var path = require('path');
 var plumber = require('gulp-plumber');
-var map = require('map-stream');
 var jshint = require('gulp-jshint');
 var eventStream = require('event-stream');
 
@@ -30,7 +29,7 @@ var lintFiles = [
 
 
 // Build JavaScript distribution files
-gulp.task('build', ['clean'], function() {
+gulp.task('build', ['clean', 'test', 'jshint'], function() {
   return eventStream.merge(gulp.src(sourceFiles))
     .pipe(plumber())
     .pipe(concat('angular-actioncable.js'))
@@ -47,23 +46,14 @@ gulp.task('clean', function () {
     .pipe(clean());
 });
 
-
 // Validate source JavaScript
-var map = require('map-stream');
-var exitOnJshintError = map(function (file, cb) {
-  if (!file.jshint.success) {
-    console.error('jshint failed');
-    process.exit(1);
-  }
-});
 gulp.task('jshint', function () {
   gulp.src(lintFiles)
     .pipe(plumber())
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'))
-    .pipe(exitOnJshintError);
+    .pipe(jshint.reporter('fail'));
 });
-
 
 // watch for changes
 gulp.task('watch', function () {
@@ -78,6 +68,8 @@ gulp.task('test', function (done) {
   }, done).start();
 });
 
+
+
 gulp.task('test-dist', ['build'], function (done) {
   new Server({
     configFile: __dirname + '/karma-dist-concatenated.conf.js',
@@ -85,22 +77,17 @@ gulp.task('test-dist', ['build'], function (done) {
   }, done).start();
 });
 
-gulp.task('test-min', ['build'], function (done) {
+gulp.task('test-min', ['build', 'test-dist'], function (done) {
   new Server({
     configFile: __dirname + '/karma-dist-minified.conf.js',
     singleRun: true
   }, done).start();
 });
 
-gulp.task('release', ['jshint', 'test', 'test-dist'], function(done){
-  gulp.task('test-min');
+
+gulp.task('release', ['jshint', 'test', 'build', 'test-dist', 'test-min'], function(done){
   done();
-}); //runs `build` too as task dependency
+});
 
 gulp.task('serve', ['test', 'watch', 'build']);
 gulp.task('default', []);
-
-
-
-
-
