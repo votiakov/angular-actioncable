@@ -29,7 +29,7 @@ var lintFiles = [
 
 
 // Build JavaScript distribution files
-gulp.task('build', ['clean', 'test', 'jshint'], function() {
+gulp.task('build', ['clean'], function() {
   return eventStream.merge(gulp.src(sourceFiles))
     .pipe(plumber())
     .pipe(concat('angular-actioncable.js'))
@@ -70,14 +70,14 @@ gulp.task('test', function (done) {
 
 
 
-gulp.task('test-dist', ['build'], function (done) {
+gulp.task('test-dist', function (done) {
   new Server({
     configFile: __dirname + '/karma-dist-concatenated.conf.js',
     singleRun: true
   }, done).start();
 });
 
-gulp.task('test-min', ['build', 'test-dist'], function (done) {
+gulp.task('test-min', function (done) {
   new Server({
     configFile: __dirname + '/karma-dist-minified.conf.js',
     singleRun: true
@@ -85,9 +85,5 @@ gulp.task('test-min', ['build', 'test-dist'], function (done) {
 });
 
 
-gulp.task('release', ['jshint', 'test', 'build', 'test-dist', 'test-min'], function(done){
-  done();
-});
-
 gulp.task('serve', ['test', 'watch', 'build']);
-gulp.task('default', []);
+gulp.task('default', ['test']);

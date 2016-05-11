@@ -4,7 +4,10 @@
   "description": "Connect Angular to ActionCable",
   "main": "angular-actioncable.js",
   "scripts": {
-    "test": "gulp test"
+    "test_src": "gulp jshint && gulp test",
+    "build": "gulp jshint && gulp test && gulp build",
+    "test_dist": "gulp test-dist && gulp test-min",
+    "release": "gulp jshint && gulp test && gulp build && gulp test-dist && gulp test-min"
   },
   "repository": {
     "type": "git",
