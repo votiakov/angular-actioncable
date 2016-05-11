@@ -32,7 +32,7 @@
   },
   "homepage": "https://github.com/angular-actioncable/angular-actioncable#readme",
   "bin": {
-    "coveralls": "./bin/coveralls.js"
+    "coveralls": "./node_modules/.bin/coveralls"
   },
   "dependencies": {
     "angular": "*",
