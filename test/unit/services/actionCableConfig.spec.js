@@ -57,8 +57,8 @@ describe('ActionCableConfig', function(){
       });
     });
     describe('when meta tag not found', function() {
-      it('returns default string', function(){
-        expect(ActionCableConfig.wsUri).toBe('');
+      it('returns helpful example', function(){
+        expect(ActionCableConfig.wsUri).toBe('wss://please.add.an.actioncable.meta.tag.invalid:12345/path/to/cable');
       });
     });
     describe('after being explicitly set', function() {
