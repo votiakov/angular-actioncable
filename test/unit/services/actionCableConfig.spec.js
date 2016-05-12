@@ -6,14 +6,6 @@ describe('ActionCableConfig', function(){
   beforeEach(inject(function(_ActionCableConfig_){
     ActionCableConfig= _ActionCableConfig_;
   }));
-  afterEach(function(){
-    resetActionCableConfig();
-  });
-  function resetActionCableConfig() {
-    ActionCableConfig.wsUri= undefined;
-    ActionCableConfig.autoStart= undefined;
-    ActionCableConfig.debug= undefined;
-  };
   describe('autoStart', function() {
     it('initiates to true', function(){
       expect(ActionCableConfig.autoStart).toBe(true);
