@@ -1,7 +1,7 @@
 [< Back to readme](https://github.com/angular-actioncable/angular-actioncable/blob/master/README.md)
 
 ## Contribute
- 
+
  - before submitting a PR, make sure you successfully run: `npm run release`
 
 
@@ -29,8 +29,10 @@
  - `gulp test-min` run tests on `/dist/angular-actioncable.min.js` files (must have {Chromium or Chrome} and Firefox installed locally)
 
 ## Publish
- 
- - update the changelog with the new version; commit & push to master
+
+ - update the changelog with the new version
+ - `npm run release`
+ - if tests pass then commit changes & push to master
  - change the version in `bower.json` and `package.json` and `README.md` (5 occurrences) and push a commit named `bump version` to `master` branch
  - tag a new release with the new version in github (bower will use this)
  - fetch upstream

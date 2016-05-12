@@ -1,5 +1,7 @@
 ## edge
 
+## 1.0.0-beta3
+
 Features:
   - Officially support Rails 5.0.0.rc1
   - Update development tasks
