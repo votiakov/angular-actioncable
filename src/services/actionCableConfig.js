@@ -4,7 +4,7 @@
 // looks for Rails' <%= action_cable_meta_tag %> in this format:
 // <meta name="action-cable-url" content="ws://localhost:3000/cable"/>
 ngActionCable.value('ActionCableConfig', (function() {
-  var defaultWsUri= '';
+  var defaultWsUri= 'wss://please.add.an.actioncable.meta.tag.invalid:12345/path/to/cable';
   var defaultAutoStart= true;
   var defaultDebug= false;
   var _wsUri;
