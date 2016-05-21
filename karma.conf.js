@@ -18,7 +18,7 @@ module.exports = function(config) {
       'node_modules/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
-      'bower_components/angular-websocket/angular-websocket.js',
+      'bower_components/angular-websocket/dist/angular-websocket.js',
       'src/**/*.js',
       'test/**/*.spec.js'
     ],
