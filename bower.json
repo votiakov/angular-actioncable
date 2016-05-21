@@ -27,8 +27,8 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "*",
-    "angular-websocket": "^1.1.0"
+    "angular": "<2.0.0",
+    "angular-websocket": "^2.0.0"
   },
   "devDependencies": {
   }
