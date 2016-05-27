@@ -1,6 +1,11 @@
 ## edge
 
-## 1.0.0-beta3
+## 1.0.0-beta4 Update Websockets
+
+Features:
+  - update angular-websockets dependency to 2.x
+
+## 1.0.0-beta3 Update Config
 
 Features:
   - Officially support Rails 5.0.0.rc1
