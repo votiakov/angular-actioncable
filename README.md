@@ -25,7 +25,7 @@ An Angular 1.x service for seamlessly integrating Rails 5 (ActionCable) into fro
 ```html
   <%= action_cable_meta_tag %>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-  <script src="bower_components/angular-websocket/angular-websocket.min.js"></script>
+  <script src="bower_components/angular-websocket/dist/angular-websocket.min.js"></script>
   <script src="bower_components/angular-actioncable/dist/angular-actioncable.js"></script>
   <section ng-controller="SomeController">
     <ul>
@@ -53,7 +53,7 @@ An Angular 1.x service for seamlessly integrating Rails 5 (ActionCable) into fro
 ```html
   <meta name="action-cable-url" content="ws://localhost:3000/cable"/>
   <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
-  <script src="bower_components/angular-websocket/angular-websocket.min.js"></script>
+  <script src="bower_components/angular-websocket/dist/angular-websocket.min.js"></script>
   <script src="bower_components/angular-actioncable/dist/angular-actioncable.js"></script>
   <section ng-controller="SomeController">
     <ul>
