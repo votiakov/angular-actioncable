@@ -1,4 +1,5 @@
 ## edge
+  - Officially support Rails 5.0.0.rc2
 
 ## 1.0.0-beta4 Update Websockets
 
