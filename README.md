@@ -174,4 +174,4 @@ my_app.run(function (ActionCableConfig){
 [MIT](https://github.com/angular-actioncable/angular-actioncable/blob/master/LICENSE.txt)
 
 #### Development
-[Setup development](https://github.com/angular-actioncable/angular-actioncable/blob/master/DEVELOPMENT.md)
+[Setup development](https://github.com/angular-actioncable/angular-actioncable/blob/master/CONTRIBUTING.md)
