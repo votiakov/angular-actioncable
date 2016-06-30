@@ -35,17 +35,28 @@ describe('ActionCableConfig', function(){
   });
   describe('wsUri', function() {
     describe('when meta tag set', function() {
-      var element, attr;
+      var wholeDocument, actionCableMetaTag, metaTags;
       beforeEach(function() {
-        element= { attr: null, data: function(){} };
-        attr= 'wss://foobar.tld:1234/path/name';
-        spyOn(angular, 'element').and.returnValue(element);
-        spyOn(element, 'attr').and.returnValue(attr);
+        wholeDocument= {data: function(){}, find: function(tag){} };
+        actionCableMetaTag= function(name){
+          if (name=== 'name') {
+            return 'action-cable-url';
+          };
+          if (name=== 'content') {
+            return 'wss://foobar.tld:1234/path/name';
+          };
+          return false;
+        };
+        metaTags= [{
+          hasAttribute: actionCableMetaTag,
+          getAttribute: actionCableMetaTag
+        }];
+        spyOn(angular, 'element').and.returnValue(wholeDocument);
+        spyOn(wholeDocument, 'find').and.returnValue(metaTags);
       });
       it('returns meta value', function(){
         expect(ActionCableConfig.wsUri).toBe('wss://foobar.tld:1234/path/name');
-        expect(angular.element).toHaveBeenCalledWith("meta[name='action-cable-url']");
-        expect(element.attr).toHaveBeenCalledWith("content");
+        expect(wholeDocument.find).toHaveBeenCalledWith('meta');
       });
     });
     describe('when meta tag not found', function() {
