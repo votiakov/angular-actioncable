@@ -35,28 +35,21 @@ describe('ActionCableConfig', function(){
   });
   describe('wsUri', function() {
     describe('when meta tag set', function() {
-      var wholeDocument, actionCableMetaTag, metaTags;
+      var actionCableMetaTag, metaTags;
       beforeEach(function() {
-        wholeDocument= {data: function(){}, find: function(tag){} };
-        actionCableMetaTag= function(name){
-          if (name=== 'name') {
-            return 'action-cable-url';
-          };
-          if (name=== 'content') {
-            return 'wss://foobar.tld:1234/path/name';
-          };
+        actionCableMetaTag= function(attrib){
+          if (attrib=== 'name') return 'action-cable-url';
+          if (attrib=== 'content') return 'wss://foobar.tld:1234/path/name';
           return false;
         };
-        metaTags= [{
-          hasAttribute: actionCableMetaTag,
-          getAttribute: actionCableMetaTag
-        }];
-        spyOn(angular, 'element').and.returnValue(wholeDocument);
-        spyOn(wholeDocument, 'find').and.returnValue(metaTags);
+        metaTags= [
+          { hasAttribute: actionCableMetaTag, getAttribute: actionCableMetaTag }
+        ];
+        spyOn(document, 'getElementsByTagName').and.returnValue(metaTags);
       });
       it('returns meta value', function(){
         expect(ActionCableConfig.wsUri).toBe('wss://foobar.tld:1234/path/name');
-        expect(wholeDocument.find).toHaveBeenCalledWith('meta');
+        expect(document.getElementsByTagName).toHaveBeenCalledWith('meta');
       });
     });
     describe('when meta tag not found', function() {

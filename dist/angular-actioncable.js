@@ -94,18 +94,17 @@ ngActionCable.factory('ActionCableConfig', function() {
   });
   return config;
   function actioncable_meta_tag_content() {
-    var thisDoc= angular.element(document);
-    var metaTags= thisDoc.find('meta');
-    var actionCableMetaContent= false;
+    var metaTags= document.getElementsByTagName('meta');
+    var metaTagContent= false;
     for (var index = 0; index < metaTags.length; index++) {
       if (metaTags[index].hasAttribute('name') && metaTags[index].hasAttribute('content')) {
         if (metaTags[index].getAttribute('name')=== 'action-cable-url' ){
-          actionCableMetaContent= metaTags[index].getAttribute('content');
+          metaTagContent= metaTags[index].getAttribute('content');
           break;
         }
       }
     }
-    return actionCableMetaContent;
+    return metaTagContent;
   }
 });
 
