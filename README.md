@@ -97,10 +97,7 @@ end
 ## Support
 
 Supports:
-- Rails 5.0.0.beta3
-- Rails 5.0.0.beta4
-- Rails 5.0.0.rc1
-- Rails 5.0.0.rc2
+- Rails 5.0
 
 ## Examples
 
