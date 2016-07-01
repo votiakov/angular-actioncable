@@ -1,5 +1,9 @@
 ## edge
+
+## 1.0.0
+  - Officially support Rails 5.0.0
   - Officially support Rails 5.0.0.rc2
+  - Remove hidden jQuery dependency
 
 ## 1.0.0-beta4 Update Websockets
 
