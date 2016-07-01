@@ -22,6 +22,16 @@ ngActionCable.factory('ActionCableConfig', function() {
   });
   return config;
   function actioncable_meta_tag_content() {
-    return angular.element("meta[name='action-cable-url']").attr("content");
+    var metaTags= document.getElementsByTagName('meta');
+    var metaTagContent= false;
+    for (var index = 0; index < metaTags.length; index++) {
+      if (metaTags[index].hasAttribute('name') && metaTags[index].hasAttribute('content')) {
+        if (metaTags[index].getAttribute('name')=== 'action-cable-url' ){
+          metaTagContent= metaTags[index].getAttribute('content');
+          break;
+        }
+      }
+    }
+    return metaTagContent;
   }
 });
