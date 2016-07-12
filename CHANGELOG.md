@@ -1,5 +1,10 @@
 ## edge
 
+## 1.0.1
+
+Bugfixes:
+  - npm primary entry point updated
+
 ## 1.0.0
   - Officially support Rails 5.0.0
   - Officially support Rails 5.0.0.rc2
