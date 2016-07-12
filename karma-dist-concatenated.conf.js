@@ -14,7 +14,6 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'node_modules/jquery/dist/jquery.js',
       'bower_components/angular/angular.js',
       'node_modules/angular-mocks/angular-mocks.js',
       'bower_components/angular-websocket/dist/angular-websocket.js',
