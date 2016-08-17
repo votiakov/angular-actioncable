@@ -7,7 +7,8 @@
 // of the internal trivalent logic. Exactly one will be true at all times.
 //
 // Actions are start() and stop()
-ngActionCable.factory("ActionCableSocketWrangler", function($rootScope, ActionCableWebsocket, ActionCableConfig, ActionCableController) {
+ngActionCable.factory('ActionCableSocketWrangler', ['$rootScope', 'ActionCableWebsocket', 'ActionCableConfig', 'ActionCableController',
+function($rootScope, ActionCableWebsocket, ActionCableConfig, ActionCableController) {
   var reconnectIntervalTime= 7537;
   var timeoutTime= 20143;
   var websocket= ActionCableWebsocket;
@@ -93,4 +94,4 @@ ngActionCable.factory("ActionCableSocketWrangler", function($rootScope, ActionCa
 
   if (ActionCableConfig.autoStart) methods.start();
   return methods;
-});
+}]);

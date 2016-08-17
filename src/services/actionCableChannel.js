@@ -1,6 +1,7 @@
 'use strict';
 
-ngActionCable.factory("ActionCableChannel",function ($q, ActionCableController, ActionCableWebsocket, ActionCableConfig, ActionCableSocketWrangler){
+ngActionCable.factory("ActionCableChannel", ['$q', 'ActionCableController', 'ActionCableWebsocket', 'ActionCableConfig', 'ActionCableSocketWrangler',
+function ($q, ActionCableController, ActionCableWebsocket, ActionCableConfig, ActionCableSocketWrangler){
   return function(channelName, channelParams){
     this._websocketControllerActions= function(){
       ActionCableController.actions[this.channelName]= ActionCableController.actions[this.channelName] || {};
@@ -64,4 +65,4 @@ ngActionCable.factory("ActionCableChannel",function ($q, ActionCableController, 
       throw "Can't find onMessageCallback in callbacks array to remove";
     };
   };
-});
+}]);
