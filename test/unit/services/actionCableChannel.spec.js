@@ -20,9 +20,28 @@ describe('ActionCableChannel', function(){
   };
   beforeEach(function(){
     resetActionCableWebsocketMock();
-    module(function($provide) {$provide.value('ActionCableChannel', ActionCableChannel);});
   });
+  var rootScope;
+  beforeEach(inject(function(_$rootScope_) {
+    rootScope= _$rootScope_;
+  }));
+  beforeEach(inject(function(_ActionCableChannel_){
+    ActionCableChannel= _ActionCableChannel_;
+  }));
   it('exists', function(){
     expect(ActionCableChannel).toBeObject;
+  });
+  describe('onConfirmSubscription', function(){
+    var consumer;
+    beforeEach(function(){
+      consumer= new ActionCableChannel('fooBarChannel')
+    });
+    it('listens for broadcast', function(){
+      var fired= false;
+      var callback= function(){ fired= true; };
+      consumer.onConfirmSubscription(callback);
+      rootScope.$broadcast('confirm_subscription:fooBarChannel');
+      expect(fired).toBe(true);
+    });
   });
 });
