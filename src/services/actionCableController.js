@@ -1,6 +1,6 @@
 'use strict';
 
-ngActionCable.factory('ActionCableController', function (ActionCableConfig) {
+ngActionCable.factory('ActionCableController', ['ActionCableConfig', function (ActionCableConfig) {
 
   // add a hash of callbacks here that `route_channel` will call on an incoming message.
   // actions format: actions[channelName][dataParams] = [callback1, callback2, ...]
@@ -70,4 +70,4 @@ ngActionCable.factory('ActionCableController', function (ActionCableConfig) {
   };
 
   return methods;
-});
+}]);

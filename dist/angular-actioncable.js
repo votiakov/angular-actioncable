@@ -4,7 +4,8 @@ var ngActionCable= angular.module('ngActionCable', ['ngWebSocket']);
 
 'use strict';
 
-ngActionCable.factory("ActionCableChannel",function ($q, ActionCableController, ActionCableWebsocket, ActionCableConfig, ActionCableSocketWrangler){
+ngActionCable.factory("ActionCableChannel", ['$q', 'ActionCableController', 'ActionCableWebsocket', 'ActionCableConfig', 'ActionCableSocketWrangler',
+function ($q, ActionCableController, ActionCableWebsocket, ActionCableConfig, ActionCableSocketWrangler){
   return function(channelName, channelParams){
     this._websocketControllerActions= function(){
       ActionCableController.actions[this.channelName]= ActionCableController.actions[this.channelName] || {};
@@ -68,7 +69,7 @@ ngActionCable.factory("ActionCableChannel",function ($q, ActionCableController, 
       throw "Can't find onMessageCallback in callbacks array to remove";
     };
   };
-});
+}]);
 
 'use strict';
 
@@ -110,7 +111,7 @@ ngActionCable.factory('ActionCableConfig', function() {
 
 'use strict';
 
-ngActionCable.factory('ActionCableController', function (ActionCableConfig) {
+ngActionCable.factory('ActionCableController', ['ActionCableConfig', function (ActionCableConfig) {
 
   // add a hash of callbacks here that `route_channel` will call on an incoming message.
   // actions format: actions[channelName][dataParams] = [callback1, callback2, ...]
@@ -180,7 +181,7 @@ ngActionCable.factory('ActionCableController', function (ActionCableConfig) {
   };
 
   return methods;
-});
+}]);
 
 'use strict';
 
@@ -191,7 +192,8 @@ ngActionCable.factory('ActionCableController', function (ActionCableConfig) {
 // of the internal trivalent logic. Exactly one will be true at all times.
 //
 // Actions are start() and stop()
-ngActionCable.factory("ActionCableSocketWrangler", function($rootScope, ActionCableWebsocket, ActionCableConfig, ActionCableController) {
+ngActionCable.factory('ActionCableSocketWrangler', ['$rootScope', 'ActionCableWebsocket', 'ActionCableConfig', 'ActionCableController',
+function($rootScope, ActionCableWebsocket, ActionCableConfig, ActionCableController) {
   var reconnectIntervalTime= 7537;
   var timeoutTime= 20143;
   var websocket= ActionCableWebsocket;
@@ -277,7 +279,7 @@ ngActionCable.factory("ActionCableSocketWrangler", function($rootScope, ActionCa
 
   if (ActionCableConfig.autoStart) methods.start();
   return methods;
-});
+}]);
 
 'use strict';
 
@@ -306,7 +308,7 @@ ngActionCable.factory("ActionCableSocketWrangler", function($rootScope, ActionCa
 //  - will set params to ["identifier"]["data"]
 
 
-ngActionCable.factory("ActionCableWebsocket", function($websocket, ActionCableController, ActionCableConfig) {
+ngActionCable.factory("ActionCableWebsocket", ['$websocket', 'ActionCableController', 'ActionCableConfig', function($websocket, ActionCableController, ActionCableConfig) {
   var wsUrl = ActionCableConfig.wsUri;
   var controller = ActionCableController;
   var dataStream = null;
@@ -389,6 +391,6 @@ ngActionCable.factory("ActionCableWebsocket", function($websocket, ActionCableCo
     }
   };
   return methods;
-});
+}]);
 
 //# sourceMappingURL
