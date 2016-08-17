@@ -19,7 +19,8 @@ var rootDirectory = path.resolve('./');
 var sourceDirectory = path.join(rootDirectory, './src');
 
 var sourceFiles = [
-  path.join(sourceDirectory, '/**/*.js')
+  path.join(sourceDirectory, '/**/*.js'),
+  path.join(rootDirectory, '/*footer.*')
 ];
 
 var lintFiles = [

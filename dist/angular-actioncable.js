@@ -390,3 +390,5 @@ ngActionCable.factory("ActionCableWebsocket", function($websocket, ActionCableCo
   };
   return methods;
 });
+
+//# sourceMappingURL
