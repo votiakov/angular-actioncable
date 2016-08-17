@@ -64,7 +64,7 @@ var ngActionCable = angular.module('ngActionCable', ['ngWebSocket']);
       };
 
       this.onConfirmSubscription = function(callback) {
-        console.log('Callback', 'confirm_subscription:' +  this.channelName);
+        if (ActionCableConfig.debug) { console.log('Callback', 'confirm_subscription:' +  this.channelName); }
         $rootScope.$on('confirm_subscription:' +  this.channelName, callback);
       };
 
