@@ -110,12 +110,13 @@ Supports:
 _constructor function_
 
 ##### Methods
-name        | arguments                                                | description
-------------|----------------------------------------------------------|--------------------------------------------
-new         | channelName:String<br />channelParams:Hash:_optional_<br />_returns instance_    | Creates and opens an ActionCableChannel instance.<br />`var consumer = new ActionCableChannel('MyChannel', {widget_id: 17});`
-subscribe   | callback:Function<br />_returns promise_                 | Subscribes a callback function to the channel.<br />`consumer.subscribe(function(message){ $scope.thing = message });`
-unsubscribe | <br />_returns promise_                                  | Unsubscribes the callback function from the channel.<br />`consumer.unsubscribe();`
-send        | message:String<br />action:String:_optional_<br />_returns promise_ | Send a message to an action in Rails. The action is the method name in Ruby.<br />`consumer.send('message');`
+name                  | arguments                                                | description
+----------------------|----------------------------------------------------------|--------------------------------------------
+new                   | channelName:String<br />channelParams:Hash:_optional_<br />_returns instance_    | Creates and opens an ActionCableChannel instance.<br />`var consumer = new ActionCableChannel('MyChannel', {widget_id: 17});`
+subscribe             | callback:Function<br />_returns promise_                 | Subscribes a callback function to the channel.<br />`consumer.subscribe(function(message){ $scope.thing = message });`
+unsubscribe           | <br />_returns promise_                                  | Unsubscribes the callback function from the channel.<br />`consumer.unsubscribe();`
+send                  | message:String<br />action:String:_optional_<br />_returns promise_ | Send a message to an action in Rails. The action is the method name in Ruby.<br />`consumer.send('message');`
+onConfirmSubscription | callback:Function                                        | Call each time server registers a subscription.<br />`consumer.onConfirmSubscription(function(){ console.log('subscribed'); });`
 
 ### Factory: `ActionCableSocketWrangler`
 
