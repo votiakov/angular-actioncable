@@ -1,5 +1,12 @@
 ## edge
 
+Bugfixes:
+  - minsafe dependency injections
+
+Features:
+  - Add ActionCableChannel#onConfirmSubscription
+  - Hide generated-file diffs in PRs
+
 ## 1.0.1
 
 Bugfixes:
