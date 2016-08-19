@@ -1,5 +1,7 @@
 ## edge
 
+## 1.1.0
+
 Bugfixes:
   - minsafe dependency injections
 
