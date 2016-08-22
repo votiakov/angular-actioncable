@@ -6,7 +6,7 @@
 [![npm downloads](https://img.shields.io/npm/dm/angular-actioncable.svg?style=flat&label=npm+downloads)](https://www.npmjs.com/package/angular-actioncable)
 # angular-actioncable
 
-An Angular 1.x service for seamlessly integrating Rails 5 (ActionCable) into frontend Angular code.
+An Angular 1.x service for seamlessly integrating Rails 5 (ActionCable) into frontend Angular code.  This service opens and maintains a websocket connection between Angular and ActionCable, reconnecting & resubscribing when the connection has been lost, and desynchronising the clients from one another to ease server-side events like code deploys or server restarts.
 
 <p align="center"><img src="https://cdn.rawgit.com/angular/angular.js/d71dc2f5afec230711351e9f160873a41eb60597/images/logo/AngularJS-Shield.exports/AngularJS-Shield-medium.png" alt="AngularJS"/>&nbsp;&nbsp;<img src="https://rawgit.com/angular-actioncable/angular-actioncable/b6acb7042a39796a7ffa951053145a451d00b8bb/images/gemstone_supported_by_tracks.png" alt="Ruby" /></p>
 
