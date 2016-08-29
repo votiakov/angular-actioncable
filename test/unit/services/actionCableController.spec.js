@@ -1,5 +1,4 @@
 'use strict';
-
 describe('ActionCableController', function(){
   var ActionCableController;
   beforeEach(module('ngActionCable'));
@@ -15,16 +14,22 @@ describe('ActionCableController', function(){
     expect(ActionCableController).toBeObject;
   });
   describe('subscription', function(){
-    var railsMessage;
-    beforeEach(function(){
-      railsMessage= {
-        type: 'confirm_subscription',
-        identifier: JSON.stringify({'channel': 'fooBarChannel'})
-      };
+    forEachRailsVersion(function(railsMessage){
+      it('broadcasts', function(){
+        ActionCableController.post(railsMessage['confirm_subscription']);
+        expect(rootScope.$broadcast).toHaveBeenCalledWith('confirm_subscription:fooBarChannel');
+      });
     });
-    it('broadcasts', function(){
-      ActionCableController.post(railsMessage);
-      expect(rootScope.$broadcast).toHaveBeenCalledWith('confirm_subscription:fooBarChannel');
+  });
+  describe('ping', function(){
+    forEachRailsVersion(function(railsMessage){
+      it('after_ping_callback', function(){
+        var fired= false;
+        var callback= function(){ fired= true; };
+        ActionCableController.after_ping_callback= callback;
+        ActionCableController.post(railsMessage['ping']);
+        expect(fired).toBe(true);
+      });
     });
   });
 });
