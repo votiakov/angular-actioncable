@@ -1,5 +1,4 @@
 'use strict';
-
 describe('ActionCableController', function(){
   var ActionCableController;
   beforeEach(module('ngActionCable'));
@@ -15,41 +14,21 @@ describe('ActionCableController', function(){
     expect(ActionCableController).toBeObject;
   });
   describe('subscription', function(){
-    var railsMessage;
-    beforeEach(function(){
-      railsMessage= {
-        type: 'confirm_subscription',
-        identifier: JSON.stringify({'channel': 'fooBarChannel'})
-      };
-    });
-    it('broadcasts', function(){
-      ActionCableController.post(railsMessage);
-      expect(rootScope.$broadcast).toHaveBeenCalledWith('confirm_subscription:fooBarChannel');
+    forEachRailsVersion(function(railsMessage){
+      it('broadcasts', function(){
+        ActionCableController.post(railsMessage['confirm_subscription']);
+        expect(rootScope.$broadcast).toHaveBeenCalledWith('confirm_subscription:fooBarChannel');
+      });
     });
   });
   describe('ping', function(){
-    var railsPing= {};
-    beforeEach(function(){
-      railsPing= {
-        five: {
-          type: 'ping'
-        },
-        five_beta_3: {
-          identifier: '_ping'
-        }
-      };
-    });
-    describe('Rails ', function(){
-      ['five', 'five_beta_3'].forEach(function(rails_version, index, array){
-        describe(rails_version, function(){
-          it('after_ping_callback', function(){
-            var fired= false;
-            var callback= function(){ fired= true; };
-            ActionCableController.after_ping_callback= callback;
-            ActionCableController.post(railsPing[rails_version]);
-            expect(fired).toBe(true);
-          });
-        });
+    forEachRailsVersion(function(railsMessage){
+      it('after_ping_callback', function(){
+        var fired= false;
+        var callback= function(){ fired= true; };
+        ActionCableController.after_ping_callback= callback;
+        ActionCableController.post(railsMessage['ping']);
+        expect(fired).toBe(true);
       });
     });
   });
