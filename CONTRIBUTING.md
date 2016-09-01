@@ -7,9 +7,9 @@
 
 ## Setup Development (developed using Node v4.3.1)
 
- - `npm install -g gulp-cli`
- - `npm install -g karma-cli`
+ - `npm install -g bower`
  - `npm install`
+ - `bower install`
 
  - `npm run test_src` runs `gulp jshint` and `gulp test` on `src/*.js` files
  - `npm run test_dist` runs `gulp test-dist` and `gulp test-min` on `dist/*.js` files
@@ -27,6 +27,8 @@
  - `gulp test` run tests on `/src` files (must have {Chromium or Chrome} and Firefox installed locally)
  - `gulp test-dist` run tests on `/dist/angular-actioncable.js` files (must have {Chromium or Chrome} and Firefox installed locally)
  - `gulp test-min` run tests on `/dist/angular-actioncable.min.js` files (must have {Chromium or Chrome} and Firefox installed locally)
+
+ - `sudo apt-get install chromium-browser` is recommended for the browser requirements
 
 ## Publish
 
