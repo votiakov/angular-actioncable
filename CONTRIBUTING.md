@@ -7,6 +7,8 @@
 
 ## Setup Development (developed using Node v4.3.1)
 
+ - `npm install -g gulp-cli`
+ - `npm install -g karma-cli`
  - `npm install -g bower`
  - `npm install`
  - `bower install`
