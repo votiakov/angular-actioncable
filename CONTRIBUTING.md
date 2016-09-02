@@ -2,7 +2,7 @@
 
 ## Contribute
 
- - before submitting a PR, make sure you successfully run: `npm run release`
+ - before submitting a PR, make sure you successfully run: `npm run build`
 
 
 ## Setup Development (developed using Node v4.3.1)
@@ -14,9 +14,9 @@
  - `bower install`
 
  - `npm run test_src` runs `gulp jshint` and `gulp test` on `src/*.js` files
- - `npm run test_dist` runs `gulp test-dist` and `gulp test-min` on `dist/*.js` files
- - `npm run build` runs `gulp jshint` and `gulp test` and `gulp build`
- - `npm run release` tests `src/`, builds `dist/` and tests `dist/`
+ - `npm run build` runs jshint, tests `src/`, builds `dist/` and builds & tests dist and minimised dist
+
+ - `apt-get install chromium-browser` is recommended for the browser requirements
 
 #### other commands
 
@@ -30,15 +30,13 @@
  - `gulp test-dist` run tests on `/dist/angular-actioncable.js` files (must have {Chromium or Chrome} and Firefox installed locally)
  - `gulp test-min` run tests on `/dist/angular-actioncable.min.js` files (must have {Chromium or Chrome} and Firefox installed locally)
 
- - `sudo apt-get install chromium-browser` is recommended for the browser requirements
-
 ## Publish
 
  - update the changelog with the new version
- - `npm run release`
+ - `npm run build`
  - if tests pass then commit changes & push to master
  - change the version in `bower.json` and `package.json` and `README.md` (5 occurrences) and push a commit named `bump version` to `master` branch
  - tag a new release with the new version in github (bower will use this)
  - fetch upstream
- - publish to npm: pull master, `npm login`, `npm publish`
+ - publish to npm: fetch & pull master, `npm login`, `npm publish`
 

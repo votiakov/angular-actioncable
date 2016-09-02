@@ -15,9 +15,7 @@ before_script:
   - "bower install"
 
 script:
-  - "npm run test_src"
   - "npm run build"
-  - "npm run test_dist"
 
 after_script:
   - "cat coverage/PhantomJS*/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf coverage"
