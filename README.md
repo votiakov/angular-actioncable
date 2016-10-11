@@ -72,7 +72,7 @@ An Angular 1.x service for seamlessly integrating Rails 5 (ActionCable) into fro
       $scope.myData = [];
 
       // connect to ActionCable
-      var consumer = new ActionCableChannel("MyChannel", {user: 42, chat: 37}));
+      var consumer = new ActionCableChannel("MyChannel", {user: 42, chat: 37});
       var callback = function(message){ $scope.myData.push(message); };
       consumer.subscribe(callback).then(function(){
         $scope.sendToMyChannel = function(message){ consumer.send(message, 'send_a_message'); };
