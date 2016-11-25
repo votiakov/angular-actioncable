@@ -32,8 +32,13 @@ describe('ActionCableWebsocket', function(){
   it('exists', function(){
     expect(ActionCableWebsocket).toBeObject;
   });
-  it('uses the URI provided by ActionCableConfig', function(){
+  it('uses the initial URI provided by ActionCableConfig', function(){
     ActionCableWebsocket.attempt_restart();
     expect($websocketClassMock).toHaveBeenCalledWith('foobarz42uri');
+  });
+  it('uses a new URI changed after initialisation', function(){
+    ActionCableConfigMock.wsUri= 'newBarzUri';
+    ActionCableWebsocket.attempt_restart();
+    expect($websocketClassMock).toHaveBeenCalledWith('newBarzUri');
   });
 });
