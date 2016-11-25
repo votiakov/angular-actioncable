@@ -1,5 +1,10 @@
 ## edge
 
+## 1.1.1
+
+Bugfixes:
+  - check wsUri [more than once](https://github.com/angular-actioncable/angular-actioncable/issues/61)
+
 ## 1.1.0
 
 Bugfixes:
