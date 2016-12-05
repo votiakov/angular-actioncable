@@ -102,6 +102,7 @@ Supports:
 ## Examples
 
  - [Demo project with Rails 5 backend and Angular frontend](https://github.com/Neil-Ni/rails5-actioncable-angular-demo) from [Neil-Ni](https://github.com/Neil-Ni)
+ - [Example frontend](https://github.com/CraftAcademy/quizmaster-client/blob/5b026e88e9f29e81a7385b13779f451c7e632f6a/www/js/controllers.js)
 
 ## API
 
