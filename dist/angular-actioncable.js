@@ -427,7 +427,7 @@ ngActionCable.factory("ActionCableWebsocket", ['$websocket', 'ActionCableControl
       return (this.connected() && subscribe_to(channel, data));
     },
     unsubscribe: function(channel, data){
-      for(var i=0; i<currentChannels.length; i++){ if (currentChannels[i].name===channel) {currentChannels.splice(i, 1);} }
+      for(var i=0; i<currentChannels.length; i++){ if (currentChannels[i].name===channel && currentChannels[i].data.channel === data.channel) {currentChannels.splice(i, 1);} }
       return (this.connected() && unsubscribe_from(channel, data));
     },
     send: function(channel, data, message, action){
